@@ -1,6 +1,3 @@
-print("Halo, saya OXYFANN!")
-print("Saya sedang belajar Python.")
-print("Suatu hari saya akan jago coding!")
 angka1 = 10
 angka2 = 5
 
