@@ -401,6 +401,58 @@
   OXYFANN • WEBSITE ONLINE
 </div>
   
+<!-- OXYFANN INTERACTIVE TERMINAL -->
+<div id="oxy-terminal" style="max-width:650px;margin:30px auto;padding:18px;background:#080d12;color:#65ff9b;border:1px solid #24c96b;border-radius:12px;font-family:monospace;box-shadow:0 0 18px #24c96b22;">
+  <div style="border-bottom:1px solid #244b36;padding-bottom:10px;margin-bottom:12px;">
+    <span style="color:#65ff9b;">●</span>
+    <span style="color:#65ff9b;"> OXYFANN TERMINAL</span>
+    <span style="float:right;color:#8b9b91;">v1.0</span>
+  </div>
+  <div id="oxy-output" style="min-height:100px;max-height:220px;overflow-y:auto;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7;">Welcome to OXYFANN Terminal.
+Ketik help untuk melihat perintah.
+</div>
+  <form id="oxy-form" style="display:flex;gap:8px;margin-top:12px;">
+    <label for="oxy-input" style="padding-top:10px;">&gt;</label>
+    <input id="oxy-input" type="text" autocomplete="off" placeholder="Ketik perintah..." style="flex:1;min-width:0;background:#101820;color:#fff;border:1px solid #315442;border-radius:6px;padding:10px;font-family:monospace;">
+    <button type="submit" style="background:#174d30;color:#8bffb2;border:1px solid #35d07f;border-radius:6px;padding:8px 12px;">Run</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  const form = document.getElementById("oxy-form");
+  const input = document.getElementById("oxy-input");
+  const output = document.getElementById("oxy-output");
+
+  if (!form || !input || !output) return;
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const command = input.value.trim().toLowerCase();
+    if (!command) return;
+
+    const responses = {
+      help: "Perintah tersedia:\nhelp - melihat bantuan\nabout - tentang OXYFANN\nskills - informasi kemampuan\nstatus - status terminal\nclear - membersihkan layar",
+      about: "OXYFANN — Personal Website\nSelamat datang di terminal interaktif!",
+      skills: "Skills: HTML, CSS, JavaScript, Web Development.",
+      status: "Terminal aktif. Sistem demo berjalan di browser."
+    };
+
+    if (command === "clear") {
+      output.textContent = "";
+    } else {
+      const response = responses[command] || "Perintah tidak dikenal. Ketik help untuk bantuan.";
+      output.textContent += "\n> " + command + "\n" + response;
+    }
+
+    output.scrollTop = output.scrollHeight;
+    input.value = "";
+  });
+})();
+</script>
+<!-- END OXYFANN TERMINAL -->
+  
 </body>
 </html>
 
